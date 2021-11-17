@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Desafio.AMcom.Models;
 using System;
 using System.IO;
 
@@ -58,18 +59,6 @@ namespace Desafio.AMcom.Controllers
             file.WriteLine(temperatura.ValorCelsius);
             file.WriteLine(temperatura.ValorFahrenheit);
 
-            return Ok();
-        }
-
-        [HttpGet("paises")]
-        public ActionResult RetornaPaises()
-        {
-            return Ok();
-        }
-
-        [HttpGet("pais-por-sigla")]
-        public ActionResult RetornaPaisPorSigla()
-        {
             return Ok();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Desafio.AMcom.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,38 +14,48 @@ namespace Desafio.AMcom.Controllers
     [ApiController]
     public class PaisController : ControllerBase
     {
+        private ILogger<PaisController> _logger;
+
+        public PaisController(ILogger<PaisController> logger)
+        {
+            _logger = logger;
+        }
+
         // GET: api/<PaisController>
         [HttpGet]
         public object Get()
         {
-            Paises paises = new Paises();
-            var ret = paises.PaisesAll();
-            return ret;
+            try
+            {
+                Paises paises = new Paises();
+                var ret = paises.PaisesAll();
+                return ret;
+            }
+            catch (Exception)
+            {
+                _logger.LogInformation("Ocorreu um problema ao Buscar os dados");
+                return NotFound();
+            }
+            
+        }
+        // GET: api/<PaisController>
+        [HttpGet("api/[controller]/{sigla}")]
+        public object Get(string sigla)
+        {
+            try
+            {
+                Paises paises = new Paises();
+                var ret = paises.PaisesAll();
+                var pais = ret.Where(a => a.sigla.Contains(sigla)).FirstOrDefault();
+                return pais;
+            }
+            catch (Exception)
+            {
+                _logger.LogInformation("Ocorreu um problema ao Buscar os dados");
+                return NotFound();
+            }
+
         }
 
-        // GET api/<PaisController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<PaisController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<PaisController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PaisController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

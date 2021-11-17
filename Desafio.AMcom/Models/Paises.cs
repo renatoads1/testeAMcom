@@ -16,18 +16,15 @@ namespace Desafio.AMcom.Models
         public string nome_pais { get; set; }
         public string nome_pais_int { get; set; }
         public string sigla { get; set; }
-        public List<Paises> PaisesAll() {
 
-            using (StreamReader r = new StreamReader(@"C:\Users\Renato\source\Testes\amcom\Desafio.AMcom\paises.json"))
-            {
-
+        public List<Paises> PaisesAll()
+        {
+           using (StreamReader r = new StreamReader(Directory.GetCurrentDirectory()+@"\paises.json"))
+           {
                 var json = r.ReadToEnd();
                 List<Paises> ListaPaises = JsonConvert.DeserializeObject<List<Paises>>(json);
                 return ListaPaises;
-            }
-
-            
+           }
         }
-
     }
 }

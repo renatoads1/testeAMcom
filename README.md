@@ -18,7 +18,7 @@ O aplicativo é uma WebAPI desenvolvida em .NET 5 e estamos com problemas para i
 5)	Documente os endpoints no Swagger ----------------------------------ok
 6)	Implemente Polly para Requests Http.
 7)	Publique seu código em um repositório 😊 ---------------------------ok (https://github.com/renatoads1/testeAMcom)
-8)	Crie uma imagem Docker do seu aplicativo e publique lá no Docker Hub.
+8)	Crie uma imagem Docker do seu aplicativo e publique lá no Docker Hub.  (erro de acesso) 
 
 ####Quanto tempo esperamos que você gaste para escrever esse teste?
 Até 04 horas, preferimos que você use 4 horas para propor uma implementação aproximada e descrever como continuar. Se você quiser dedicar mais tempo, tudo bem, 
